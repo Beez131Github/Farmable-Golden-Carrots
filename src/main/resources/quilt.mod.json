@@ -1,0 +1,32 @@
+{
+    "schema_version": 1,
+    "quilt_loader": {
+        "group": "${group}",
+        "id": "craftable_xp",
+        "version": "${version}",
+        "metadata": {
+            "description": "Adds craftable XP bottles as a alternative to cleric villagers",
+            "contributors": {
+							"Beez131": "Owner/Developer"
+            },
+            "contact": {},
+            "icon": "assets/craftable_xp/icon.png",
+            "license": "MIT"
+        },
+        "intermediate_mappings": "net.fabricmc:intermediary",
+        "entrypoints": {
+            "main": "io.github.beez131github.craftable_xp.craftable_xp"
+        },
+        "depends": [
+            {
+                "id": "quilt_loader",
+                "versions": ">=0.28.0-beta.6"
+            },
+            {
+                "id": "minecraft",
+                "versions": ">=1.21.4"
+            }
+        ]
+    },
+    "mixin": "craftable_xp.mixins.json"
+}
