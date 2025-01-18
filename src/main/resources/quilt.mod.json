@@ -2,20 +2,20 @@
     "schema_version": 1,
     "quilt_loader": {
         "group": "${group}",
-        "id": "craftable_xp",
+        "id": "grow_gc",
         "version": "${version}",
         "metadata": {
-            "description": "Adds craftable XP bottles as a alternative to cleric villagers",
+            "description": "Makes golden carrots farmable just like regular carrots",
             "contributors": {
 							"Beez131": "Owner/Developer"
             },
             "contact": {},
-            "icon": "assets/craftable_xp/icon.png",
+            "icon": "assets/grow_gc/icon.png",
             "license": "MIT"
         },
         "intermediate_mappings": "net.fabricmc:intermediary",
         "entrypoints": {
-            "main": "io.github.beez131github.craftable_xp.craftable_xp"
+            "main": "io.github.beez131github.grow_gc.craftable_xp"
         },
         "depends": [
             {
@@ -28,5 +28,5 @@
             }
         ]
     },
-    "mixin": "craftable_xp.mixins.json"
+    "mixin": "grow_gc.mixins.json"
 }
