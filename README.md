@@ -1,1 +1,1 @@
-# Better Enchant Table
+# Farmable golden carrots
