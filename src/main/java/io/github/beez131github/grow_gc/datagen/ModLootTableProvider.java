@@ -7,9 +7,13 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootPool;
+import net.minecraft.loot.LootTable;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
+import net.minecraft.loot.condition.SurvivesExplosionLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
+import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
 import net.minecraft.predicate.StatePredicate;
 import net.minecraft.registry.HolderLookup;
@@ -29,8 +33,17 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		BlockStatePropertyLootCondition.Builder builder = BlockStatePropertyLootCondition.builder(GOLDEN_CARROT_CROP)
 			.properties(StatePredicate.Builder.create().exactMatch(GoldenCarrotCropBlock.AGE, GoldenCarrotCropBlock.MAX_AGE));
 
-		// Pass both seed and crop items
-		this.addDrop(GOLDEN_CARROT_CROP, cropDrops(GOLDEN_CARROT_CROP, Items.GOLDEN_CARROT, Items.GOLDEN_CARROT, builder));
+		this.add(ModBlocks.GOLDEN_CARROT_CROP, block ->
+			LootTable.builder()
+				.pool(
+					LootPool.builder()
+						.rolls(ConstantLootNumberProvider.create(1))
+						.with(ItemEntry.builder(Items.GOLDEN_CARROT))
+						.conditionally(SurvivesExplosionLootCondition.builder())
+				)
+		);
+
 	}
+
 
 }
