@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import io.github.beez131github.grow_gc.block.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
 import net.minecraft.loot.condition.BlockStatePropertyLootCondition;
 import net.minecraft.loot.entry.ItemEntry;
@@ -28,7 +29,8 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		BlockStatePropertyLootCondition.Builder builder = BlockStatePropertyLootCondition.builder(GOLDEN_CARROT_CROP)
 			.properties(StatePredicate.Builder.create().exactMatch(GoldenCarrotCropBlock.AGE, GoldenCarrotCropBlock.MAX_AGE));
 
-		this.addDrop(GOLDEN_CARROT_CROP, (net.minecraft.item.ItemConvertible) cropDrops(GOLDEN_CARROT_CROP, Items.GOLDEN_CARROT, builder));
+		// Pass both seed and crop items
+		this.addDrop(GOLDEN_CARROT_CROP, (ItemConvertible) cropDrops(GOLDEN_CARROT_CROP, Items.GOLDEN_CARROT, Items.GOLDEN_CARROT, builder));
 	}
 
 }
