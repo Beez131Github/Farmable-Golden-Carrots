@@ -15,7 +15,8 @@
         },
         "intermediate_mappings": "net.fabricmc:intermediary",
         "entrypoints": {
-            "main": "io.github.beez131github.grow_gc.Grow_Gc"
+            "main": "io.github.beez131github.grow_gc.Grow_Gc",
+					"datagen": "io.github.beez131github.grow_gc.DataGeneratorEntrypoint"
         },
         "depends": [
             {

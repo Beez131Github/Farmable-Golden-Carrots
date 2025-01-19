@@ -9,8 +9,8 @@ import net.minecraft.state.StateManager;
 import net.minecraft.state.property.IntProperty;
 
 public class GoldenCarrotCropBlock extends CropBlock {
-	public static final int MAX_AGE = 6;
-	public static final IntProperty AGE = IntProperty.of("age", 0, 6);
+	public static final int MAX_AGE = 7;
+	public static final IntProperty AGE = IntProperty.of("age", 0, 7);
 
 	public GoldenCarrotCropBlock(Settings settings) {
 		super(settings);

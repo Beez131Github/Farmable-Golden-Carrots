@@ -2,6 +2,7 @@ package io.github.beez131github.grow_gc;
 
 import io.github.beez131github.grow_gc.block.ModBlocks;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -16,4 +17,5 @@ public class Grow_Gc implements ModInitializer {
 		ModBlocks.registerModBlocks();
 		LOGGER.info("Grow_Gc mod initialized!");
 	}
+
 }
