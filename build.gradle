@@ -18,6 +18,10 @@ repositories {
 	// for more information about repositories.
 }
 
+fabricApi {
+	configureDataGeneration()
+}
+
 loom {
 	// Loom and Loader both use this block in order to gather more information about your mod.
 	mods {
