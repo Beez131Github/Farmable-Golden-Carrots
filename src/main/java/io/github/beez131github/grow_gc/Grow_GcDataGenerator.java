@@ -10,6 +10,5 @@ public class Grow_GcDataGenerator implements DataGeneratorEntrypoint {
 		FabricDataGenerator.Pack pack = fabricDataGenerator.createPack();
 
 		pack.addProvider(ModLootTableProvider::new);
-		pack.addProvider(ModModelProvider::new);
 	}
 }

@@ -30,7 +30,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 			.properties(StatePredicate.Builder.create().exactMatch(GoldenCarrotCropBlock.AGE, GoldenCarrotCropBlock.MAX_AGE));
 
 		// Pass both seed and crop items
-		this.addDrop(GOLDEN_CARROT_CROP, (ItemConvertible) cropDrops(GOLDEN_CARROT_CROP, Items.GOLDEN_CARROT, Items.GOLDEN_CARROT, builder));
+		this.addDrop(GOLDEN_CARROT_CROP, cropDrops(GOLDEN_CARROT_CROP, Items.GOLDEN_CARROT, Items.GOLDEN_CARROT, builder));
 	}
 
 }
