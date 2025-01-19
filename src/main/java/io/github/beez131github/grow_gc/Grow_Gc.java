@@ -13,6 +13,7 @@ public class Grow_Gc implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModBlocks.registerModBlocks();
 		LOGGER.info("Grow_Gc mod initialized!");
 	}
 }
