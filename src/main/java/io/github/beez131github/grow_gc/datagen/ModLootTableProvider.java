@@ -36,6 +36,16 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		this.add(ModBlocks.GOLDEN_CARROT_CROP, block ->
 			LootTable.builder()
 				.pool(
+					// Loot pool for dropping 1 golden carrot, regardless of growth stage
+					LootPool.builder()
+						.rolls(ConstantLootNumberProvider.create(1))
+						.with(ItemEntry.builder(Items.GOLDEN_CARROT)
+							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
+						)
+						.conditionally(SurvivesExplosionLootCondition.builder())
+				)
+				.pool(
+					// Loot pool for dropping 2 to 5 additional golden carrots if fully grown
 					LootPool.builder()
 						.rolls(ConstantLootNumberProvider.create(1))
 						.with(ItemEntry.builder(Items.GOLDEN_CARROT)
@@ -46,12 +56,12 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 											.exactMatch(GoldenCarrotCropBlock.AGE, GoldenCarrotCropBlock.MAX_AGE)
 									)
 							)
-							// Drop 2 to 5 golden carrots if fully grown
-							.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2, 5)))
+							.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 4)))
 						)
 						.conditionally(SurvivesExplosionLootCondition.builder())
 				)
 		);
+
 
 	}
 
