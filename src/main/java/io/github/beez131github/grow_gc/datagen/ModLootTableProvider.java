@@ -36,9 +36,40 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 		this.add(ModBlocks.GOLDEN_CARROT_CROP, block ->
 			LootTable.builder()
 				.pool(
+					// Loot pool for fully grown crop
 					LootPool.builder()
 						.rolls(ConstantLootNumberProvider.create(1))
-						.with(ItemEntry.builder(Items.GOLDEN_CARROT))
+						.with(ItemEntry.builder(Items.GOLDEN_CARROT)
+							.conditionally(
+								BlockStatePropertyLootCondition.builder(ModBlocks.GOLDEN_CARROT_CROP)
+									.properties(
+										StatePredicate.Builder.create()
+											.exactMatch(GoldenCarrotCropBlock.AGE, GoldenCarrotCropBlock.MAX_AGE)
+									)
+							)
+							// Drop 2 to 5 golden carrots if fully grown
+							.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(2, 5)))
+						)
+						.conditionally(SurvivesExplosionLootCondition.builder())
+				)
+				.pool(
+					// Loot pool for not fully grown crop
+					LootPool.builder()
+						.rolls(ConstantLootNumberProvider.create(1))
+						.with(ItemEntry.builder(Items.GOLDEN_CARROT)
+							.conditionally(
+								BlockStatePropertyLootCondition.builder(ModBlocks.GOLDEN_CARROT_CROP)
+									.properties(
+										StatePredicate.Builder.create()
+											.exactMatch(GoldenCarrotCropBlock.AGE, GoldenCarrotCropBlock.MAX_AGE)
+											.exactMatch(GoldenCarrotCropBlock.AGE, 0)
+
+
+									)
+							)
+							// Drop exactly 1 golden carrot if not fully grown
+							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
+						)
 						.conditionally(SurvivesExplosionLootCondition.builder())
 				)
 		);
