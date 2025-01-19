@@ -6,6 +6,7 @@ import net.minecraft.block.*;
 import net.minecraft.block.piston.PistonBehavior;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.sound.BlockSoundGroup;
@@ -14,10 +15,24 @@ import net.minecraft.util.Identifier;
 
 public class ModBlocks {
 
-	public static final Block GOLDEN_CARROT_CROP = registerBlockWithoutBlockItem
-		("golden_carrot_crop", new GoldenCarrotCropBlock(AbstractBlock.Settings.create()
-			.noCollision().ticksRandomly().breakInstantly().sounds(BlockSoundGroup.CROP).pistonBehavior(PistonBehavior.DESTROY).mapColor(DyeColor.YELLOW)));
+	// Define a RegistryKey for your block
+	public static final RegistryKey<Block> GOLDEN_CARROT_CROP_KEY = RegistryKey.of(
+		Registries.BLOCK.getKey(),
+		Identifier.of(Grow_Gc.MOD_ID, "golden_carrot_crop")
+	);
 
+	// Register your block using the key
+	public static final Block GOLDEN_CARROT_CROP = registerBlockWithoutBlockItem(
+		"golden_carrot_crop",
+		new GoldenCarrotCropBlock(AbstractBlock.Settings.create()
+			.noCollision()
+			.ticksRandomly()
+			.breakInstantly()
+			.sounds(BlockSoundGroup.CROP)
+			.pistonBehavior(PistonBehavior.DESTROY)
+			.mapColor(DyeColor.YELLOW)
+			.key(GOLDEN_CARROT_CROP_KEY)) // Apply the key here
+	);
 
 	private static Block registerBlockWithoutBlockItem(String name, Block block) {
 		return Registry.register(Registries.BLOCK, Identifier.of(Grow_Gc.MOD_ID, name), block);
@@ -37,4 +52,3 @@ public class ModBlocks {
 		Grow_Gc.LOGGER.info("Registering Mod Blocks for " + Grow_Gc.MOD_ID);
 	}
 }
-
