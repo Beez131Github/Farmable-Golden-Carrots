@@ -45,7 +45,7 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 						.conditionally(SurvivesExplosionLootCondition.builder())
 				)
 				.pool(
-					// Loot pool for dropping 2 to 5 additional golden carrots if fully grown
+					// Loot pool for dropping 2 to 5 golden carrots if fully grown
 					LootPool.builder()
 						.rolls(ConstantLootNumberProvider.create(1))
 						.with(ItemEntry.builder(Items.GOLDEN_CARROT)

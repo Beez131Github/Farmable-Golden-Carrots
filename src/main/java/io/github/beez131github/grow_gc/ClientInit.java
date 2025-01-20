@@ -25,7 +25,7 @@ public class ClientInit implements ClientModInitializer {
 		ClientLoginConnectionEvents.QUERY_START.register((handler, client) -> validServer = false);
 
 		ClientLoginNetworking.registerGlobalReceiver(
-			Grow_Gc.VERIFICATION_CHANNEL,
+			GrowGc.VERIFICATION_CHANNEL,
 			(client, handler, buf, listenerAdder) -> {
 				validServer = true;
 				return CompletableFuture.completedFuture(PacketByteBufs.empty());
