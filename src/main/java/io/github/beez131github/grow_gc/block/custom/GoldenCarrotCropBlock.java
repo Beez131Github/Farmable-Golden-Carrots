@@ -1,5 +1,6 @@
 package io.github.beez131github.grow_gc.block.custom;
 
+import io.github.beez131github.grow_gc.item.ModItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
@@ -18,7 +19,7 @@ public class GoldenCarrotCropBlock extends CropBlock {
 
 	@Override
 	protected ItemConvertible getSeedsItem() {
-		return Items.GOLDEN_CARROT;
+		return ModItems.ROOTED_GOLDEN_CARROT;
 	}
 
 	@Override
