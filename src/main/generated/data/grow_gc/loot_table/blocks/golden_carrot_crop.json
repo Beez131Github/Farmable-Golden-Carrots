@@ -18,7 +18,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:golden_carrot"
+          "name": "grow_gc:rooted_golden_carrot"
         }
       ],
       "rolls": 1.0

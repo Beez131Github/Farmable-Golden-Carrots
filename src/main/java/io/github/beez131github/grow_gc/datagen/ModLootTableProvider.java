@@ -1,5 +1,6 @@
 package io.github.beez131github.grow_gc.datagen;
 
+import io.github.beez131github.grow_gc.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import io.github.beez131github.grow_gc.block.ModBlocks;
@@ -39,13 +40,13 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 					// Loot pool for dropping 1 golden carrot, regardless of growth stage
 					LootPool.builder()
 						.rolls(ConstantLootNumberProvider.create(1))
-						.with(ItemEntry.builder(Items.GOLDEN_CARROT)
+						.with(ItemEntry.builder(ModItems.ROOTED_GOLDEN_CARROT)
 							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
 						)
 						.conditionally(SurvivesExplosionLootCondition.builder())
 				)
 				.pool(
-					// Loot pool for dropping 2 to 5 golden carrots if fully grown
+					// Loot pool for also dropping 1 to 4 rooted golden carrots if fully grown
 					LootPool.builder()
 						.rolls(ConstantLootNumberProvider.create(1))
 						.with(ItemEntry.builder(Items.GOLDEN_CARROT)
