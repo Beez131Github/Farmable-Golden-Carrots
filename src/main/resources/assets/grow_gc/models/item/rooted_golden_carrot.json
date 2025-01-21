@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "grow_gc:item/rooted_golden_carrot"
+  }
+}
