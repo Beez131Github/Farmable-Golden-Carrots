@@ -27,21 +27,41 @@
       "bonus_rolls": 0.0,
       "conditions": [
         {
+          "block": "grow_gc:golden_carrot_crop",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "7"
+          }
+        },
+        {
           "condition": "minecraft:survives_explosion"
         }
       ],
       "entries": [
         {
           "type": "minecraft:item",
-          "conditions": [
-            {
-              "block": "grow_gc:golden_carrot_crop",
-              "condition": "minecraft:block_state_property",
-              "properties": {
-                "age": "7"
-              }
-            }
-          ],
+          "name": "minecraft:golden_carrot"
+        }
+      ],
+      "rolls": 1.0
+    },
+    {
+      "bonus_rolls": 0.0,
+      "conditions": [
+        {
+          "block": "grow_gc:golden_carrot_crop",
+          "condition": "minecraft:block_state_property",
+          "properties": {
+            "age": "7"
+          }
+        },
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
           "functions": [
             {
               "add": false,
@@ -53,7 +73,7 @@
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:golden_carrot"
+          "name": "grow_gc:rooted_golden_carrot"
         }
       ],
       "rolls": 1.0
