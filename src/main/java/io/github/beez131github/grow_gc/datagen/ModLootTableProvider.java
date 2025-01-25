@@ -1,5 +1,6 @@
 package io.github.beez131github.grow_gc.datagen;
 
+import io.github.beez131github.grow_gc.item.ModItems;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import io.github.beez131github.grow_gc.block.ModBlocks;
@@ -30,40 +31,41 @@ public class ModLootTableProvider extends FabricBlockLootTableProvider {
 
 	@Override
 	public void generate() {
-		BlockStatePropertyLootCondition.Builder builder = BlockStatePropertyLootCondition.builder(GOLDEN_CARROT_CROP)
+		BlockStatePropertyLootCondition.Builder fullyGrownCondition = BlockStatePropertyLootCondition.builder(GOLDEN_CARROT_CROP)
 			.properties(StatePredicate.Builder.create().exactMatch(GoldenCarrotCropBlock.AGE, GoldenCarrotCropBlock.MAX_AGE));
 
 		this.add(ModBlocks.GOLDEN_CARROT_CROP, block ->
 			LootTable.builder()
 				.pool(
-					// Loot pool for dropping 1 golden carrot, regardless of growth stage
+					// Loot pool for dropping 1 rooted golden carrot (default drop for all stages)
 					LootPool.builder()
 						.rolls(ConstantLootNumberProvider.create(1))
-						.with(ItemEntry.builder(Items.GOLDEN_CARROT)
+						.with(ItemEntry.builder(ModItems.ROOTED_GOLDEN_CARROT)
 							.apply(SetCountLootFunction.builder(ConstantLootNumberProvider.create(1)))
 						)
 						.conditionally(SurvivesExplosionLootCondition.builder())
 				)
 				.pool(
-					// Loot pool for dropping 2 to 5 golden carrots if fully grown
+					// Loot pool for dropping 1 additional golden carrot when fully grown
 					LootPool.builder()
 						.rolls(ConstantLootNumberProvider.create(1))
-						.with(ItemEntry.builder(Items.GOLDEN_CARROT)
-							.conditionally(
-								BlockStatePropertyLootCondition.builder(ModBlocks.GOLDEN_CARROT_CROP)
-									.properties(
-										StatePredicate.Builder.create()
-											.exactMatch(GoldenCarrotCropBlock.AGE, GoldenCarrotCropBlock.MAX_AGE)
-									)
-							)
+						.with(ItemEntry.builder(Items.GOLDEN_CARROT))
+						.conditionally(fullyGrownCondition)
+						.conditionally(SurvivesExplosionLootCondition.builder())
+				)
+				.pool(
+					// Loot pool for dropping 1-4 rooted golden carrots when fully grown
+					LootPool.builder()
+						.rolls(ConstantLootNumberProvider.create(1))
+						.with(ItemEntry.builder(ModItems.ROOTED_GOLDEN_CARROT)
 							.apply(SetCountLootFunction.builder(UniformLootNumberProvider.create(1, 4)))
 						)
+						.conditionally(fullyGrownCondition)
 						.conditionally(SurvivesExplosionLootCondition.builder())
 				)
 		);
-
-
 	}
+
 
 
 }
