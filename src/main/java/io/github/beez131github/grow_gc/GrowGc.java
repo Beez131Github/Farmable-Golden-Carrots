@@ -16,7 +16,7 @@ public class GrowGc implements ModInitializer {
 	public void onInitialize() {
 		ModItems.registerModItems();
 		ModBlocks.registerModBlocks();
-		LOGGER.info("Grow_Gc mod initialized!");
+		LOGGER.info("GrowGc mod initialized!");
 	}
 
 }
